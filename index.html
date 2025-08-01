@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Girlfriend's Day!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF5F5; /* A soft pink background */
+            color: #5C3342; /* A deep, warm text color */
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-dancing {
+            font-family: 'Dancing Script', cursive;
+        }
+        .hero {
+            /* Replace the placeholder with a real photo of you two! */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://placehold.co/1200x800/E6C7C7/5C3342?text=Our+Favorite+Photo') no-repeat center center/cover;
+            height: 100vh;
+        }
+        .card {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5rem;
+        }
+        .card-face-back {
+            transform: rotateY(180deg);
+        }
+        .letter-container {
+            border: 10px solid #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background-color: #FFFAFA;
+        }
+        .gallery-img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        /* Animation for elements to fade in as they are scrolled into view */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-element {
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="leading-normal tracking-normal">
+
+    <!-- Background Music Player -->
+    <!-- IMPORTANT: Replace "path/to/your/music.mp3" with the actual link to your song -->
+    <audio id="background-music" loop>
+        <source src="path/to/your/music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="music-toggle" class="fixed bottom-5 right-5 bg-white p-3 rounded-full shadow-lg z-50">
+        <!-- SVG Play Icon -->
+        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C3342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <!-- SVG Pause Icon -->
+        <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C3342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center text-white">
+        <div class="text-center p-4">
+            <h1 class="text-5xl md:text-7xl font-playfair mb-4">Happy Girlfriend's Day!</h1>
+            <p class="text-xl md:text-2xl font-light">To the one who makes my world brighter.</p>
+            <p class="text-4xl md:text-6xl font-dancing mt-10">[Shreya Bansal]</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-playfair mb-12">Our Journey</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Story Item 1 -->
+                <div class="w-full md:w-1/4 p-4 bg-white rounded-lg shadow-lg text-center fade-in-element">
+                    <img src="https://placehold.co/300x200/FFE0E0/5C3342?text=How+We+Met" class="rounded-t-lg" alt="How we met">
+                    <h3 class="text-2xl font-playfair my-4">How We Met</h3>
+                    <p class="text-gray-600">Add a short description of how you first met. Make it sweet and memorable!</p>
+                </div>
+                <!-- Story Item 2 -->
+                <div class="w-full md:w-1/4 p-4 bg-white rounded-lg shadow-lg text-center fade-in-element" style="animation-delay: 0.2s;">
+                    <img src="https://placehold.co/300x200/FFD1D1/5C3342?text=Our+First+Date" class="rounded-t-lg" alt="Our first date">
+                    <h3 class="text-2xl font-playfair my-4">Our First Date</h3>
+                    <p class="text-gray-600">Describe your first date. What did you do? What did you feel?</p>
+                </div>
+                <!-- Story Item 3 -->
+                <div class="w-full md:w-1/4 p-4 bg-white rounded-lg shadow-lg text-center fade-in-element" style="animation-delay: 0.4s;">
+                    <img src="https://placehold.co/300x200/FFC2C2/5C3342?text=Favorite+Moment" class="rounded-t-lg" alt="Favorite moment">
+                    <h3 class="text-2xl font-playfair my-4">A Favorite Moment</h3>
+                    <p class="text-gray-600">Share a favorite memory that always makes you smile. A trip, a laugh, anything!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reasons I Love You Section -->
+    <section class="bg-white py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-playfair mb-12">A Few Reasons Why I Love You</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Reason Card 1 -->
+                <div class="h-48 relative">
+                    <div class="card w-full h-full">
+                        <div class="card-face flex items-center justify-center bg-rose-200 text-2xl font-playfair text-rose-800">Your Smile</div>
+                        <div class="card-face card-face-back flex items-center justify-center bg-rose-100 p-4 text-gray-700">It lights up my entire day.</div>
+                    </div>
+                </div>
+                <!-- Reason Card 2 -->
+                 <div class="h-48 relative">
+                    <div class="card w-full h-full">
+                        <div class="card-face flex items-center justify-center bg-purple-200 text-2xl font-playfair text-purple-800">Your Laugh</div>
+                        <div class="card-face card-face-back flex items-center justify-center bg-purple-100 p-4 text-gray-700">It's my favorite sound in the world.</div>
+                    </div>
+                </div>
+                <!-- Reason Card 3 -->
+                 <div class="h-48 relative">
+                    <div class="card w-full h-full">
+                        <div class="card-face flex items-center justify-center bg-amber-200 text-2xl font-playfair text-amber-800">Your Kindness</div>
+                        <div class="card-face card-face-back flex items-center justify-center bg-amber-100 p-4 text-gray-700">You make me want to be a better person.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-playfair mb-12">Our Photo Album</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="fade-in-element"><img src="https://placehold.co/400x400/E6C7C7/5C3342?text=Photo+1" alt="Our Memory 1" class="gallery-img rounded-lg shadow-md"></div>
+                <div class="fade-in-element" style="animation-delay: 0.1s;"><img src="https://placehold.co/400x400/FFD1D1/5C3342?text=Photo+2" alt="Our Memory 2" class="gallery-img rounded-lg shadow-md"></div>
+                <div class="fade-in-element" style="animation-delay: 0.2s;"><img src="https://placehold.co/400x400/FFC2C2/5C3342?text=Photo+3" alt="Our Memory 3" class="gallery-img rounded-lg shadow-md"></div>
+                <div class="fade-in-element" style="animation-delay: 0.3s;"><img src="https://placehold.co/400x400/FFB3B3/5C3342?text=Photo+4" alt="Our Memory 4" class="gallery-img rounded-lg shadow-md"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Letter For You Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-2xl">
+             <h2 class="text-4xl font-playfair mb-12 text-center">A Letter For You</h2>
+            <div class="p-8 md:p-12 rounded-lg shadow-xl letter-container">
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    My Dearest [Her Name], <br><br>
+                    This is where you can write a longer, heartfelt letter. Tell her how much she means to you, recall some inside jokes, and share your dreams for the future together. This is the most personal part, so pour your heart out!
+                    <br><br>
+                    You can add as much as you want here. The more personal, the better. She will absolutely love reading this.
+                    <br><br>
+                    With all my love, <br>
+                    <span class="font-dancing text-2xl">[Your Name]</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>Made with ❤️ for the best girlfriend in the world.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Music Player Logic ---
+        const music = document.getElementById('background-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            } else {
+                music.play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- Card Flip Animation ---
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('is-flipped');
+            });
+        });
+
+        // --- Fade In Elements on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-element');
+                    observer.unobserve(entry.target); // Optional: stop observing once animated
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-element').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
